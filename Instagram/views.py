@@ -8,21 +8,16 @@ from django.contrib.auth.decorators import login_required
 
 
 
-# @login_required(login_url='/accounts/login/')
-# def welcome(request):
-#     current_user = request.user
-#     images = Image.objects.all()
-#     profile = Profile.objects.all()
-
-#     return render(request, 'index.html', locals())
-
-
-@login_required(login_url='/accounts/login')
-def userspace(request):
+@login_required(login_url='/accounts/login/')
+def welcome(request):
     current_user = request.user
     images = Image.objects.all()
     profile = Profile.objects.all()
+
     return render(request, 'index.html', locals())
+
+
+
 
 @login_required(login_url='/accounts/login')
 def upload_form(request):
