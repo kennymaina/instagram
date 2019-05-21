@@ -1,0 +1,45 @@
+{% extends 'base.html'%}
+{% block content %}
+{{block.super}}
+<div class="w3-container">
+<div class="w3-row">
+
+<div class="w3-margin w3-third w3-padding hide-small m4" style="position:relative">
+        <div class="w3-card w3-round w3-black">
+        <div class="w3-container">
+        <h4 class="w3-center">Profile</h4>
+        <p class="w3-center w3-padding"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/788d6365663791.5afc1d2cc1fde.jpg" class="w3-circle" style="height:150px;width:150px" alt="Avatar"></p>
+            <p>{{user.username}}</p>
+            {% if user.profile.bio %}
+            <p>{{ user.profile.bio }}</p>
+            {%else%}
+            <P>No user bio for {{user.username}}</P>
+            {% endif %}
+            <a href="{%url 'profupdate'%}"><i class="fa fa-edit w3-button">Edit your Profile</i></a>
+        <hr>
+        <a href="{%url 'post'%}"><i class="fa fa-upload w3-center" aria-hidden="true"> Upload any Photo</i></a><br><br>
+        </div>
+        </div>
+        <br>
+</div>
+    {% for image in images %}
+        <div class="w3-card w3-round w3-right w3-padding w3-margin w3-rest">
+        <div class="w3-container ">
+        <br>
+        </div>
+        <img src="{{image.pic.url}}" class="w3-margin  w3-round w3-image w3-right ">
+        <div class="w3-container">
+        <p>{{image.description}}</p>
+            <hr>
+            <div class="w3-bar w3-left">
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"> Like</i>
+                <i class="fa fa-comments-o" aria-hidden="true"> Comment</i>
+            </div>
+        </div>
+        </div>
+    {% endfor %}
+
+</div>
+</div>
+
+{%endblock%}relative

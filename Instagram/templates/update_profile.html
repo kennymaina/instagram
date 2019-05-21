@@ -1,0 +1,30 @@
+{% extends 'base.html'%}
+{%load bootstrap3%}
+
+{% block content %}
+{{block.super}}
+
+<div class="w3-container">
+  <div class="w3-row">
+    <div class="w3-col m6 w3-display-middle " >
+      <div class="panel panel-default w3-card w3-round-4">
+        <div class="panel-heading w3-theme-d5">
+          <h3 class="w3-center w3-padding">Upload Your Profile Picture here</h3>
+        </div>
+        <div class="panel-body ">
+          <form  method="post" action="{%url 'profupdate'%}" enctype="multipart/form-data">
+            {% csrf_token %}
+            {%bootstrap_form prof_form%}
+            <div class="form-group w3-center">
+              <input type="submit" class=" w3-center w3-margin w3-button " value="Upload">
+            </div>
+            <input type="hidden" name="next" value="{{next}}">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{form.media}}
+
+{%endblock%}
